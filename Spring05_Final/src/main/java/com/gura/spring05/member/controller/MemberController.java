@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,5 +35,28 @@ public class MemberController {
 		dao.delete(num);
 		//리다이렉트 응답
 		return "redirect:/member/list.do";
+	}
+	
+	@RequestMapping("/member/insertform")
+	public String insertform() {
+		//수행할 비즈니스 로직은 없다
+		return "member/insertform";
+	}
+	/*
+	 * @ModelAttribute MemberDto dto를 메소드의 인자로 선언하면 폼 전송되는 파라미터가
+	 * 자동으로 MemberDto객체에 setter 메소드를 통해서 들어가고 그 객체가 메소드의 인자로 전달된다.
+	 * 단, 파라미터명과 Dto의 필드명이 일치해야한다. 
+	 */
+	@RequestMapping("/member/insert")
+	public ModelAndView insert(@ModelAttribute("dto") MemberDto dto, ModelAndView mView) {
+		dao.insert(dto);
+		/*
+		 * @ModelAttribute("dto") MemberDto dto의 의미는
+		 * 1. 전송되는 파라미터를 자동으로 추출해서 MemberDto에 담아주기도 하고
+		 * 2. "dto"라는 키값으로 MemberDto 객체를 request 영역에 담아즌는 역할도 한다.
+		 */
+		//mView.addObject("dto", dto);
+		mView.setViewName("member/insert");
+		return mView;
 	}
 }

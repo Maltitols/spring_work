@@ -18,12 +18,16 @@ public class MemberDaoImpl implements MemberDao{
 	@Override
 	public List<MemberDto> getList(){
 		List<MemberDto> list=session.selectList("member.getList");			
-		
 		return list;
 	}
 	
 	@Override
 	public void delete(int num) {
 		session.delete("member.delete", num);
+	}
+	
+	@Override
+	public void insert(MemberDto dto) {
+		session.insert("member.insert", dto);
 	}
 }
