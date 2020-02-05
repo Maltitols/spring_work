@@ -117,5 +117,13 @@ public class UsersServiceImpl implements UsersService{
 			mView.addObject("isSuccess", false);
 		}
 	}
+	@Override
+	public void updateUser(UsersDto dto) {
+		dao.updateUser(dto);
+	}
+	@Override
+	public void deleteUser(String id) {
+		dao.delete(id);
+	}
 
 }
