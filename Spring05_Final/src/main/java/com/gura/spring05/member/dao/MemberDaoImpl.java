@@ -33,7 +33,7 @@ public class MemberDaoImpl implements MemberDao{
 	
 	@Override
 	public MemberDto getData(int num) {
-		MemberDto dto=session.selectOne("member.getDate", num);
+		MemberDto dto=session.selectOne("member.getData", num);
 		
 		return dto;
 	}

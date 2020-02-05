@@ -4,6 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.gura.spring05.users.dto.UsersDto;
+
 @Repository
 public class UsersDaoImpl implements UsersDao{
 	
@@ -20,6 +22,36 @@ public class UsersDaoImpl implements UsersDao{
 		}else {
 			return true;
 		}
+	}
+
+	@Override
+	public void insert(UsersDto dto) {
+		session.insert("users.insert", dto);
+	}
+
+	@Override
+	public String getPwdHash(String inputId) {
+		//입력한 아이디를 이용해서 저장된 비밀번호를 select 한다.
+		//만일 존재하지 않는 아이디 이면 null 이다.
+		String savedPwd=session.selectOne("users.getPwdHash", inputId);
+		//select 된 비밀번호를 리턴해준다. 
+		return savedPwd;
+	}
+
+	@Override
+	public UsersDto getData(String id) {
+		
+		return session.selectOne("users.getData", id);
+	}
+
+	@Override
+	public void updateProfile(UsersDto dto) {
+		session.update("users.updateProfile", dto);
+	}
+
+	@Override
+	public void updatePwd(UsersDto dto) {
+		session.update("users.updatePwd", dto);
 	}
 
 }

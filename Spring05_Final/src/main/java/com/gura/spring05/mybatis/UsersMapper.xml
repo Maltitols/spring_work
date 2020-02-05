@@ -6,4 +6,31 @@
 		FROM users
 		WHERE id=#{inputId}
 	</select>
+	<insert id="insert" parameterType="usersDto">
+		INSERT INTO users
+		(id, pwd, email, regdate)
+		VALUES(#{id}, #{pwd}, #{email}, SYSDATE)
+	</insert>
+	<select id="getPwdHash" parameterType="String" resultType="String">
+		SELECT pwd 
+		FROM users
+		WHERE id=#{inputId}
+	</select>
+	<select id="getData" parameterType="String" resultType="usersDto">
+		SELECT id,pwd,email,regdate,profile
+		FROM users
+		WHERE id=#{id}
+	</select>
+	
+	<update id="updateProfile" parameterType="usersDto">
+		UPDATE users
+		SET profile=#{profile}
+		WHERE id=#{id}
+	</update>
+	
+	<update id="updatePwd" parameterType="usersDto">
+		UPDATE users
+		SET pwd=#{pwd}
+		WHERE id=#{id}
+	</update>
 </mapper>
