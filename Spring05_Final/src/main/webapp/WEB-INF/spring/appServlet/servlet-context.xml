@@ -76,4 +76,9 @@
 		<beans:property name="maxUploadSize" value="10240000"/>
 	</beans:bean>
 	
+	<!-- bean의 이름으로 view를 찾아갈수 있도록 설정  -->
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<!-- 0순위로 찾아가도록 하고 없으면 자동으로 views 폴더안에서 jsp 페이지를 찾는다. -->
+		<beans:property name="order" value="0"/>
+	</beans:bean>
 </beans:beans>
