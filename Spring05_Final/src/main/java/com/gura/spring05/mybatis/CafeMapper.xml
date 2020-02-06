@@ -52,4 +52,8 @@
 		(num, writer, title, content, viewCount, regdate)
 		values(board_cafe_seq.nextval, #{writer}, #{title}, #{content}, #{viewCount}, sysdate)
 	</insert>
+	<delete id="delete" parameterType="int">
+		delete from board_cafe
+		where num=#{num}
+	</delete>
 </mapper>

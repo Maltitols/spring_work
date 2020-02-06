@@ -61,7 +61,7 @@
 	function deleteConfirm(){
 		var isDelete=confirm("글을 삭제 하시 겠습니까?");
 		if(isDelete){
-			location.href="private/delete.do?num=${dto.num}";
+			location.href="delete.do?num=${dto.num}";
 		}
 	}
 </script>

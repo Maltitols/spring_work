@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gura.spring05.cafe.dao.CafeDao;
 import com.gura.spring05.cafe.dto.CafeDto;
+import com.gura.spring05.exception.CannotDeleteException;
+import com.gura.spring05.file.dto.FileDto;
 
 @Service
 public class CafeServiceImpl implements CafeService{
@@ -124,5 +126,17 @@ public class CafeServiceImpl implements CafeService{
 		String id=(String)request.getSession().getAttribute("id");
 		dto.setWriter(id);
 		dao.insert(dto);
+	}
+	@Override
+	public void delete(HttpServletRequest request) {
+		int num=Integer.parseInt(request.getParameter("num"));
+		//파일 작성자와 로그인된 아이디가 다르면 예외를 발생
+		CafeDto dto=dao.getData(num);
+		String id=(String)request.getSession().getAttribute("id");
+		if(!id.equals(dto.getWriter())) {
+			//예외를 발생시켜서 메소드가 정상수행되지 않도록 막는다
+			throw new CannotDeleteException();
+		}
+		dao.delete(num);
 	}
 }

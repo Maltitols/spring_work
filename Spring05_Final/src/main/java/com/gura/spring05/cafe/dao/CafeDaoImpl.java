@@ -42,4 +42,9 @@ public class CafeDaoImpl implements CafeDao{
 	public void insert(CafeDto dto) {
 		session.insert("cafe.insert", dto);
 	}
+	
+	@Override
+	public void delete(int num) {
+		session.delete("cafe.delete", num);
+	}
 }

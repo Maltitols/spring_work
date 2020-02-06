@@ -45,4 +45,10 @@ public class CafeController {
 		service.insert(request, dto);
 		return new ModelAndView("redirect:/cafe/list.do");
 	}
+	
+	@RequestMapping("/cafe/delete")
+	public ModelAndView authDelete(HttpServletRequest request) {
+		service.delete(request);
+		return new ModelAndView("redirect:/cafe/list.do");
+	}
 }
