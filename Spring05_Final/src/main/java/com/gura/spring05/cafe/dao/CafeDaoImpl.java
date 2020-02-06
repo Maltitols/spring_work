@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.gura.spring05.cafe.dto.CafeDto;
+import com.gura.spring05.file.dto.FileDto;
 
 @Repository
 public class CafeDaoImpl implements CafeDao{
@@ -35,5 +36,10 @@ public class CafeDaoImpl implements CafeDao{
 	@Override
 	public void addViewCount(int num) {
 		session.update("cafe.addViewCount", num);	
+	}
+	
+	@Override
+	public void insert(CafeDto dto) {
+		session.insert("cafe.insert", dto);
 	}
 }

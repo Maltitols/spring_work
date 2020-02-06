@@ -4,10 +4,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gura.spring05.cafe.dto.CafeDto;
 import com.gura.spring05.cafe.service.CafeService;
 
 @Controller
@@ -36,4 +39,10 @@ public class CafeController {
 		
 		return new ModelAndView("cafe/insertform");
 	} 
+	
+	@RequestMapping(value="/cafe/insert", method=RequestMethod.POST)
+	public ModelAndView authInsert(HttpServletRequest request, @ModelAttribute CafeDto dto) {
+		service.insert(request, dto);
+		return new ModelAndView("redirect:/cafe/list.do");
+	}
 }

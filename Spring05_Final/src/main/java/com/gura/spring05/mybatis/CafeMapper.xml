@@ -47,4 +47,9 @@
 		set viewCount=viewCount+1
 		where num=#{num}
 	</update>
+	<insert id="insert" parameterType="cafeDto">
+		insert into board_cafe
+		(num, writer, title, content, viewCount, regdate)
+		values(board_cafe_seq.nextval, #{writer}, #{title}, #{content}, #{viewCount}, sysdate)
+	</insert>
 </mapper>

@@ -119,4 +119,10 @@ public class CafeServiceImpl implements CafeService{
 	public void addViewCount(int num) {
 		dao.addViewCount(num);
 	}
+	@Override
+	public void insert(HttpServletRequest request, CafeDto dto) {
+		String id=(String)request.getSession().getAttribute("id");
+		dto.setWriter(id);
+		dao.insert(dto);
+	}
 }
