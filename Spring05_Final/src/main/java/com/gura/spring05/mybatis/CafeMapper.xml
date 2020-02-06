@@ -56,4 +56,9 @@
 		delete from board_cafe
 		where num=#{num}
 	</delete>
+	<update id="update" parameterType="cafeDto">
+		update board_cafe
+		set title=#{title}, content=#{content}
+		where num=#{num}
+	</update>
 </mapper>

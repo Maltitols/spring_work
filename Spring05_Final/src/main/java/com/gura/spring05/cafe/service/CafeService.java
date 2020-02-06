@@ -12,4 +12,5 @@ public interface CafeService {
 	public void addViewCount(int num);
 	public void insert(HttpServletRequest request, CafeDto dto);
 	public void delete(HttpServletRequest request);
+	public void update(HttpServletRequest request, CafeDto dto);
 }

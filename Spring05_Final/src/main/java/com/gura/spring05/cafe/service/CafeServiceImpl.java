@@ -139,4 +139,8 @@ public class CafeServiceImpl implements CafeService{
 		}
 		dao.delete(num);
 	}
+	@Override
+	public void update(HttpServletRequest request, CafeDto dto) {
+		dao.update(dto);
+	}
 }
