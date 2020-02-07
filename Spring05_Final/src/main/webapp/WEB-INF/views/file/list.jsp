@@ -68,7 +68,7 @@
 			<c:choose>
 				<c:when test="${startPageNum ne 1 }">
 					<li>
-						<a href="list.do?pageNum=${startPageNum-1 }&condition=${condidion }&keyword=${encodedKeyword}">&laquo;</a>
+						<a href="list.do?pageNum=${startPageNum-1 }&condition=${condition }&keyword=${encodedKeyword}">&laquo;</a>
 					</li>
 				</c:when>
 				<c:otherwise>
@@ -82,12 +82,12 @@
 				<c:choose>
 					<c:when test="${i eq pageNum }">
 						<li class="active">
-							<a href="list.do?pageNum=${i }&condition=${condidion }&keyword=${encodedKeyword}">${i }</a>
+							<a href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedKeyword}">${i }</a>
 						</li>
 					</c:when>	
 					<c:otherwise>
 						<li>
-							<a href="list.do?pageNum=${i }&condition=${condidion }&keyword=${encodedKeyword}">${i }</a>
+							<a href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedKeyword}">${i }</a>
 						</li>
 					</c:otherwise>			
 				</c:choose>
@@ -95,7 +95,7 @@
 			<c:choose>
 				<c:when test="${endPageNum lt totalPageCount }">
 					<li>
-						<a href="list.do?pageNum=${endPageNum+1 }&condition=${condidion }&keyword=${encodedKeyword}">&raquo;</a>
+						<a href="list.do?pageNum=${endPageNum+1 }&condition=${condition }&keyword=${encodedKeyword}">&raquo;</a>
 					</li>
 				</c:when>
 				<c:otherwise>
@@ -106,7 +106,7 @@
 			</c:choose>
 		</ul>
 	</div>
-	<form action="list.do" method="get"> <c:if test="${condition eq '' }">selected</c:if>
+	<form action="list.do" method="get">
 		<label for="condition">검색조건</label>
 		<select name="condition" id="condition">
 			<option value="titlename" <c:if test="${condition eq 'titlename' }">selected</c:if>>제목+파일명</option>

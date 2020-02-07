@@ -6,7 +6,7 @@
 		from board_cafe
 		<choose>
 			<when test="title!=null and content!=null">
-				where title like '%${title}%' or orgFileName like '%${content}%'
+				where title like '%${title}%' or content like '%${content}%'
 			</when>
 			<when test="title!=null">
 				where title like '%${title}%'		
@@ -25,7 +25,7 @@
 				from board_cafe
 				<choose>
 					<when test="title!=null and content!=null">
-						where title like '%${title}%' or orgFileName like '%${content}%'
+						where title like '%${title}%' or content like '%${content}%'
 					</when>
 					<when test="title!=null">
 						where title like '%${title}%'		

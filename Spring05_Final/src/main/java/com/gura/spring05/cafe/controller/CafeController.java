@@ -60,8 +60,8 @@ public class CafeController {
 	}
 	
 	@RequestMapping(value="/cafe/update", method=RequestMethod.POST)
-	public ModelAndView authUpdate(HttpServletRequest request, @ModelAttribute CafeDto dto) {
-		service.update(request, dto);
+	public ModelAndView authUpdate(@ModelAttribute CafeDto dto) {
+		service.update(dto);
 		return new ModelAndView("redirect:/cafe/list.do");
 	}
 }
