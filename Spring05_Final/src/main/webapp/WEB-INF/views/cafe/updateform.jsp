@@ -5,28 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <title>/cafe/private/updateform.jsp</title>
+<jsp:include page="../include/resource.jsp"></jsp:include>
 </head>
 <body>
+<jsp:include page="../include/navbar.jsp">
+	<jsp:param value="cafe" name="category"/>
+</jsp:include>
 <div class="container">
 	<h1>글 수정 양식 입니다.</h1>
 	<form action="update.do" method="post">
-		<input type="hidden" name="num" value=${num } />
+		<input type="hidden" name="num" value=${dto.num } />
 		<div>
 			<label for="num">글번호</label>
-			<input type="text" id="num" value=${num } disabled />
+			<input type="text" id="num" value=${dto.num } disabled />
 		</div>
 		<div>
 			<label for="title">제목</label>
-			<input type="text" id="title" name="title" value=${title } />
+			<input type="text" id="title" name="title" value=${dto.title } />
 		</div>
 		<div>
 			<label for="content">내용</label>
 			<textarea name="content" id="content">
-				${content }
+				${dto.content }
 			</textarea>
 		</div>
-		<button type="submit" onclick="submitContents(this);">수정확인</button>
-		<button type="reset">취소</button>
+		<button class="btn btn-primary" type="submit" onclick="submitContents(this);">수정확인</button>
+		<button class="btn btn-warning" type="reset">취소</button>
 	</form>
 </div>
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>

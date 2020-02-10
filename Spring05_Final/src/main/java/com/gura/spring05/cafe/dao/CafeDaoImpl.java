@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.gura.spring05.cafe.dto.CafeDto;
-import com.gura.spring05.file.dto.FileDto;
 
 @Repository
 public class CafeDaoImpl implements CafeDao{
@@ -29,8 +28,12 @@ public class CafeDaoImpl implements CafeDao{
 
 	@Override
 	public CafeDto getData(int num) {
-		CafeDto dto=session.selectOne("cafe.getData", num);
-		return dto;
+		return session.selectOne("cafe.getData2", num);
+	}
+	
+	@Override
+	public CafeDto getData(CafeDto dto) {
+		return session.selectOne("cafe.getData", dto);
 	}
 
 	@Override

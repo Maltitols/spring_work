@@ -15,6 +15,13 @@
 	<jsp:param value="cafe" name="category"/>
 </jsp:include>
 <div class="container">
+	<c:if test="${not empty keyword }">
+		<p>
+			<strong>${keyword }</strong> 라는 검색어로 
+			<strong>${totalRow }</strong> 개의 글이 검색 
+			되었습니다.
+		</p>
+	</c:if>
 	<h1>글 목록 입니다.</h1>
 	<table class="table table-striped table-condensed">
 		<colgroup>
@@ -39,7 +46,7 @@
 				<td>${tmp.num }</td>
 				<td>${tmp.writer }</td>
 				<td>
-					<a href="detail.do?num=${tmp.num }">
+					<a href="detail.do?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }">
 						${tmp.title }
 					</a>
 				</td>
@@ -95,7 +102,7 @@
 			</c:choose>
 		</ul>
 	</div>
-	<form action="list.do" method="get"> <c:if test="${condition eq '' }">selected</c:if>
+	<form action="list.do" method="get">
 		<label for="condition">검색조건</label>
 		<select name="condition" id="condition">
 			<option value="titlecontent" <c:if test="${condition eq 'titlename' }">selected</c:if>>제목+내용</option>
